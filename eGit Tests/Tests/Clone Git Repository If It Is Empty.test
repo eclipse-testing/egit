@@ -1,0 +1,60 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ
+Element-Name: Clone Git Repository If It Is Empty
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _rU8TQGRTEeKgg5t6F8eKOQ
+Save-Time: 1/22/13 12:43 PM
+Tags: eGit/CloneGitRepository
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS:
+
+1. Press "Clone a Git Repository and add the clone to this view" button in "Git Repositories" view
+2. Select empty repository - make sure that message is displayed and clonning is not executed
+3. Set new local repository - make sure that this repository is added to "Git Repositories" view
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-button "Clone a Git Repository and add the clone to this view" | click
+with [get-window "Clone Git Repository"] {
+    get-tree | select URI
+    get-button "Next >" | click
+}
+set-dialog-result Folder "platform:/resource/LocalGitRepositories/NewGitRepository"
+with [get-window "Clone Git Repository"] {
+    get-group Location | get-button "Local File..." | click
+    get-button "Next >" | click
+}
+with [get-window "Clone Git Repository"] {
+    get-editbox -after [get-label "Branch Selection"] | get-property text | equals "Source Git repository is empty" 
+        | verify-true
+    get-button Finish | get-property enablement | equals false | verify-true
+}
+get-window "Clone Git Repository" | get-button "Next >" | click
+set-dialog-result File "platform:/resource/NewGitRepository"
+get-window "Clone Git Repository" | get-group Destination | get-button Browse | click
+get-window "Clone Git Repository" | get-editbox -after [get-label "Local Destination"] | get-property text 
+    | equals "Configure the local storage location for NewGitRepository." | verify-true
+get-window "Clone Git Repository" | get-button Finish | click
+wait 1000
+get-view "Git Repositories" | get-tree | get-property itemCount | equals 1 | verify-true
+with [get-view "Git Repositories" | get-tree] {
+    get-item "NewGitRepository.*" | get-property childCount | equals 5 | verify-true
+    get-item "NewGitRepository.*/Working Directory.*" | get-property childCount | equals 1 | verify-true
+    get-item "NewGitRepository.*/Working Directory.*" | get-property caption | contains [substitute-variables "${workspace_loc}\\NewGitRepository"] | verify-true
+}
+with [get-view "Git Repositories" | get-tree] {
+    get-item "NewGitRepository.*/Working Directory.*/.git" | get-property caption | equals ".git" | verify-true
+    get-item "NewGitRepository.*/Working Directory.*/.git" | get-property childCount | equals 7 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
