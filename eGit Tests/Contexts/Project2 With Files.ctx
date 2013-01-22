@@ -1,0 +1,57 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Context-Type: com.xored.q7.workspace.context
+Element-Name: Project2 With Files
+Element-Type: context
+Element-Version: 2.0
+Id: _wmKvwGRoEeKlN9aajvd_hg
+Save-Time: 1/22/13 2:53 PM
+
+------=_contents/MyProject2/tests/test.test-09adba8f-f943-3392-a7be-c055ff7d1f8d
+Content-Type: q7/binary
+Entry-Name: contents/MyProject2/tests/test.test
+
+UEsDBBQACAAIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnQDAFBLBwgAAAAAAgAAAAAAAABQSwEC
+FAAUAAgACAAAACEAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRQSwUGAAAAAAEA
+AQA2AAAAOAAAAAAA
+------=_contents/MyProject2/tests/test.test-09adba8f-f943-3392-a7be-c055ff7d1f8d--
+------=_contents/MyProject2/.project-3d3bb506-0135-311b-9f53-8de4ddeea888
+Content-Type: q7/binary
+Entry-Name: contents/MyProject2/.project
+
+UEsDBBQACAAIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnSzsa/IzVEoSy0qzszPs1Uy1DNQUkjN
+S85PycxLt1UKDXHTtVCyt+Plsikoys9KTS5xSS1OLsosKAGqBopy2uQl5qba+VYGQGSNbPTBAiCZ5Pzc
+3NS8EjsbfRgLJAo1phjM0UfhJZVm5qQEF6QmQ+RQuXmJJaVFqVBtCA7cCFR3AQBQSwcIF9ITfoEAAADW
+AAAAUEsBAhQAFAAIAAgAAAAhABfSE36BAAAA1gAAAAgAAAAAAAAAAAAAAAAAAAAAAC5jb250ZW50UEsF
+BgAAAAABAAEANgAAALcAAAAAAA==
+------=_contents/MyProject2/.project-3d3bb506-0135-311b-9f53-8de4ddeea888--
+------=_contents/MyProject2/pom.xml-fa87500f-4090-39d4-9009-807f9533c284
+Content-Type: q7/binary
+Entry-Name: contents/MyProject2/pom.xml
+
+UEsDBBQACAAIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnQDAFBLBwgAAAAAAgAAAAAAAABQSwEC
+FAAUAAgACAAAACEAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRQSwUGAAAAAAEA
+AQA2AAAAOAAAAAAA
+------=_contents/MyProject2/pom.xml-fa87500f-4090-39d4-9009-807f9533c284--
+------=_contents/MyProject2/reports/report1.xml-79230bf0-9ca6-34e5-b555-82aeb18697ec
+Content-Type: q7/binary
+Entry-Name: contents/MyProject2/reports/report1.xml
+
+UEsDBBQACAAIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnQDAFBLBwgAAAAAAgAAAAAAAABQSwEC
+FAAUAAgACAAAACEAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRQSwUGAAAAAAEA
+AQA2AAAAOAAAAAAA
+------=_contents/MyProject2/reports/report1.xml-79230bf0-9ca6-34e5-b555-82aeb18697ec--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAAIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnSNUstOwzAQvCPxD5bv2LSXQpTQAwKE
+qiLEJdwqK9k8ih+pbZLw99h5iqqtuFi7O7Mz2pHDdSs4qkGbUskIL8gtRiATlZYyj/C3zW7u8Prh+ipM
+lCCt0pCSw4o0Sn+ZiiUQxGP1qKSF1qJWlMEkt/RyzkCawM0jXFhbBZQ2TUOUyInSOf3cvo6U0xbTFnU4
+7XB6WNEJJ5C4GUaSCcd912oPiV2iuLQFei45GIzKNMK7Rmzq5uVDPcGGv90ztq/TXZFjlHBgOp7dMsYN
+YHcyQu5od5S0XePaqhc3g9f2Z3TDA8NxMm85EMiwgOlpvPIHC/4HVjx16Q2Ejnwe1lApbc3sfqTf44tj
+DzqonJO1YC6IepT454JkSMeo+hzpHKSv//WTHPcXUEsHCNUGhn4kAQAAnQIAAFBLAQIUABQACAAIAAAA
+IQDVBoZ+JAEAAJ0CAAAIAAAAAAAAAAAAAAAAAAAAAAAuY29udGVudFBLBQYAAAAAAQABADYAAABaAQAA
+AAA=
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--
