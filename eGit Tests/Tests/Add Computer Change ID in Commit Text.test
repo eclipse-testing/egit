@@ -1,0 +1,38 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ,_zjid4GO6EeKhv6_wTzSrdg,_yqL9IGRAEeKYsa02uZ1XQA
+Element-Name: Add Computer Change ID in Commit Text
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _PQOK0GSAEeKlN9aajvd_hg
+Save-Time: 1/22/13 5:42 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Make any changes in a text file;
+2. Right-click ans select Team/Commit;
+3. Press "Compute Change-Id for Gerrit Code Review" button in a Commit Changes window;
+4. Verify that change-id appears in a Commite message text box. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-window "Open Perspective"] {
+    get-table | select "Resource.*"
+    get-button OK | click
+}
+get-view "Project Explorer" | get-tree | select "> MyProject \\[NewGitRepository NO-HEAD\\]" 
+    | get-menu "Team/Commit..." | click
+get-window "Commit Changes" | get-section "Commit message" | get-button "Compute Change-Id for Gerrit Code Review" 
+    | click
+get-window "Commit Changes" | get-section "Commit message" | get-editbox | get-property text 
+    | equals "Change-Id: I0000000000000000000000000000000000000000" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

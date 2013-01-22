@@ -6,7 +6,7 @@ Element-Name: ImportProjectFromGit
 Element-Type: context
 Element-Version: 2.0
 Id: _yqL9IGRAEeKYsa02uZ1XQA
-Save-Time: 1/22/13 10:26 AM
+Save-Time: 1/22/13 5:31 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -14,7 +14,7 @@ Entry-Name: .ecl.context
 
 get-button "Open Perspective" | click
 with [get-window "Open Perspective"] {
-    get-table | select "Resource \\(default\\)"
+    get-table | select "Resource.*"
     get-button OK | click
 }
 get-button "Git Repository Exploring" | click

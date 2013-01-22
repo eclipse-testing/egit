@@ -1,0 +1,59 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ,_zjid4GO6EeKhv6_wTzSrdg,_yqL9IGRAEeKYsa02uZ1XQA
+Element-Name: Commit Changes To Repository
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _ktzYoGR-EeKlN9aajvd_hg
+Save-Time: 1/22/13 5:35 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Make some changes in a text file;
+2. Right-click MyProject and select Commit command;
+3. Select all resources and type commit message;
+4. Click OK button;
+5. Open Git Repository Exploring perspective and make sure that the changes were commited. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-window "Open Perspective"] {
+    get-table | select "Resource.*"
+    get-button OK | click
+}
+get-view "Project Explorer" | get-tree | select "> MyProject \\[NewGitRepository NO-HEAD\\]/> tests/test.test" 
+    | double-click
+with [get-editor "test.test" | get-text-viewer] {
+    type-text qqq
+    key-type "M1+s"
+}
+get-view "Project Explorer" | get-tree | select "> MyProject \\[NewGitRepository NO-HEAD\\]" 
+    | get-menu "Team/Commit..." | click
+with [get-window "Commit Changes"] {
+    get-section "Files (0/4)" | get-button "Select All" | click
+    with [get-section "Commit message" | get-text-viewer] {
+        type-text sij
+        key-type BackSpace
+        type-text "mple commit"
+    }
+    get-button Commit | click
+}
+get-menu "Window/Open Perspective/Other..." | click
+with [get-window "Open Perspective"] {
+    get-table | select "Git Repository Exploring"
+    get-button OK | click
+}
+get-view "Git Repositories" | get-tree 
+    | select "NewGitRepository.*/Working Directory.*/MyProject/tests/test.test" 
+    | double-click
+get-editor "test.test" | get-editbox | get-property text | equals qqq | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
