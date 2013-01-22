@@ -1,0 +1,57 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Context-Type: com.xored.q7.workspace.context
+Element-Name: ProjectWithFiles
+Element-Type: context
+Element-Version: 2.0
+Id: _GaHlgWFOEeKQgdIxFQVZJQ
+Save-Time: 1/18/13 4:04 PM
+
+------=_contents/MyProject/pom.xml-d3fb181f-64fc-3e15-8003-df31504d5a5d
+Content-Type: q7/binary
+Entry-Name: contents/MyProject/pom.xml
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnQDAFBLBwgAAAAAAgAAAAAAAABQSwEC
+FAAUAAgICAAAACEAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRQSwUGAAAAAAEA
+AQA2AAAAOAAAAAAA
+------=_contents/MyProject/pom.xml-d3fb181f-64fc-3e15-8003-df31504d5a5d--
+------=_contents/MyProject/tests/test.test-acbbd96e-ef88-30b6-892e-2e687d840d39
+Content-Type: q7/binary
+Entry-Name: contents/MyProject/tests/test.test
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnQDAFBLBwgAAAAAAgAAAAAAAABQSwEC
+FAAUAAgICAAAACEAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRQSwUGAAAAAAEA
+AQA2AAAAOAAAAAAA
+------=_contents/MyProject/tests/test.test-acbbd96e-ef88-30b6-892e-2e687d840d39--
+------=_contents/MyProject/reports/report1.xml-9b92f574-89c7-3fc7-a4d0-d72329261d0b
+Content-Type: q7/binary
+Entry-Name: contents/MyProject/reports/report1.xml
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnQDAFBLBwgAAAAAAgAAAAAAAABQSwEC
+FAAUAAgICAAAACEAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRQSwUGAAAAAAEA
+AQA2AAAAOAAAAAAA
+------=_contents/MyProject/reports/report1.xml-9b92f574-89c7-3fc7-a4d0-d72329261d0b--
+------=_contents/MyProject/.project-db7607a0-e356-3aa3-a20e-b3efc9871b2e
+Content-Type: q7/binary
+Entry-Name: contents/MyProject/.project
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnSzsa/IzVEoSy0qzszPs1Uy1DNQUkjN
+S85PycxLt1UKDXHTtVCyt+Plsikoys9KTS5xSS1OLsosKAGqBopy2uQl5qba+VYGQGRt9MF8kERyfm5u
+al6JnY0+jAUShZpSDOboo/CSSjNzUoILUpMhcqjcvMSS0qJUqDYEB24EqrMAUEsHCNSdZ4d/AAAA1QAA
+AFBLAQIUABQACAgIAAAAIQDUnWeHfwAAANUAAAAIAAAAAAAAAAAAAAAAAAAAAAAuY29udGVudFBLBQYA
+AAAAAQABADYAAAC1AAAAAAA=
+------=_contents/MyProject/.project-db7607a0-e356-3aa3-a20e-b3efc9871b2e--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnSNks1OwzAQhO9IvIPlOzblUhQl9IAI
+FFRBLqTigqJkkxr8k9qGhLfHSZ1EVG3FxVrvN57RrhwuWsHRN2jDlIzwjFxiBDJXBZNVhL9seXGNFzfn
+Z2GuBGmVhoJs56RR+tPUWQ5BOlS3SlpoLWoFC0a7q87OBUgTuH6EN9bWAaVN0xAlKqJ0Rder5SA5HDG+
+oo7TntPtnI6cQO56GMlMOO2LVh+Q25TZTcw4GIxYEeH3++yBV2n8fAdPSVUs2zh5fXtMMMo5ZDqdosqM
+G8BuXoTcxG4iafuLu9Y7Z+ODVj8+CnuBk5RdoufE6zE9zOtuWMH/YMULtzkv6MXHsYZaaWum9D3/HZ/t
+Z1DvcszWgjlh2lHSHScsQzpsardGOu2xq//1i5z2F1BLBwh7/s5sJQEAAJkCAABQSwECFAAUAAgICAAA
+ACEAe/7ObCUBAACZAgAACAAAAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRQSwUGAAAAAAEAAQA2AAAAWwEA
+AAAA
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--

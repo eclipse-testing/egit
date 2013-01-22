@@ -1,0 +1,26 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Context-Type: com.xored.q7.ecl.context
+Element-Name: ImportProjectFromGit
+Element-Type: context
+Element-Version: 2.0
+Id: _yqL9IGRAEeKYsa02uZ1XQA
+Save-Time: 1/22/13 10:26 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+get-button "Open Perspective" | click
+with [get-window "Open Perspective"] {
+    get-table | select "Resource \\(default\\)"
+    get-button OK | click
+}
+get-button "Git Repository Exploring" | click
+get-view "Git Repositories" | get-tree 
+    | select "NewGitRepository.*/Working Directory.*/MyProject" | get-menu "Import Projects..." | click
+get-window "Import Projects from Git Repository.*" | get-button "Next >" | click
+get-window "Import Projects from Git Repository.*" | get-button Finish | click
+get-button "Open Perspective" | click
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

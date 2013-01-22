@@ -1,0 +1,66 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ,_zjid4GO6EeKhv6_wTzSrdg
+Element-Name: Import Project From Git Repository
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: __OtkMGO9EeKhv6_wTzSrdg
+Save-Time: 1/22/13 10:32 AM
+Tags: eGit/ImportProject
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS:
+
+1. Open "Git Repository Exploring" view
+2. Select existing Git Repository, select project from this repository
+3. Select "Import Projects..." from context menu
+4. Make sure that project is imported and is displayed in Project Explorer view
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-button "Open Perspective" | click
+with [get-window "Open Perspective"] {
+    get-table | select "Resource \\(default\\)"
+    get-button OK | click
+}
+get-button "Git Repository Exploring" | click
+get-view "Git Repositories" | get-tree 
+    | select "NewGitRepository.*/Working Directory.*/MyProject" | get-menu "Import Projects..." | click
+get-window "Import Projects from Git Repository.*" | get-tree | get-property itemCount | equals 1 | verify-true
+get-window "Import Projects from Git Repository.*" | get-tree | get-item "Working Directory.*" | get-property childCount | equals 2 | verify-true
+get-window "Import Projects from Git Repository.*" | get-tree | get-item "Working Directory.*/MyProject" | get-property caption | equals MyProject | verify-true
+get-window "Import Projects from Git Repository.*" | get-button "Next >" | click
+get-window "Import Projects from Git Repository.*" | get-tree | get-property itemCount | equals 1 | verify-true
+get-window "Import Projects from Git Repository.*" | get-tree | get-item "MyProject.*" | get-property caption | contains "MyProject" | verify-true
+get-window "Import Projects from Git Repository.*" | get-button Finish | click
+get-button "Open Perspective" | click
+with [get-window "Open Perspective"] {
+    get-table | select "Resource \\(default\\)"
+    get-button OK | click
+}
+get-view "Project Explorer" | get-tree | get-property itemCount | equals 1 | verify-true
+get-menu "File/Refresh" | click
+with [get-view "Project Explorer" | get-tree] {
+    get-item "> MyProject \\[NewGitRepository NO-HEAD\\]" | get-property caption 
+        | equals "> MyProject [NewGitRepository NO-HEAD]" | verify-true
+    get-item "> MyProject \\[NewGitRepository NO-HEAD\\]" | get-property childCount | equals 4 | verify-true
+}
+get-view "Project Explorer" | get-tree | select "> MyProject \\[NewGitRepository NO-HEAD\\]" 
+    | get-menu "Team/Commit..." | click
+with [get-window "Commit Changes"] {
+    get-section "Files (0/4)" | get-button "Select All" | click
+    with [get-section "Commit message" | get-text-viewer] {
+        type-text "first test commit"
+    }
+    get-button Commit | click
+}
+get-button "Git Repository Exploring" | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
