@@ -7,7 +7,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _rU8TQGRTEeKgg5t6F8eKOQ
-Save-Time: 1/22/13 12:43 PM
+Save-Time: 1/22/13 2:04 PM
 Tags: eGit/CloneGitRepository
 Testcase-Type: ecl
 
@@ -26,10 +26,6 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 get-button "Clone a Git Repository and add the clone to this view" | click
-with [get-window "Clone Git Repository"] {
-    get-tree | select URI
-    get-button "Next >" | click
-}
 set-dialog-result Folder "platform:/resource/LocalGitRepositories/NewGitRepository"
 with [get-window "Clone Git Repository"] {
     get-group Location | get-button "Local File..." | click
