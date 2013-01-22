@@ -2,12 +2,12 @@
 Format-Version: 1.0
 Q7-vendor: www.xored.com/q7
 Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ,_zjid4GO6EeKhv6_wTzSrdg,_wmKvwGRoEeKlN9aajvd_hg
-Element-Name: Share Project
+Element-Name: Share Project Command Shouldn't Be available for Shared Projects
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _a80owWRoEeKlN9aajvd_hg
-Save-Time: 1/22/13 2:56 PM
+Save-Time: 1/22/13 3:00 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -18,7 +18,8 @@ TEST STEPS
 
 1. Right-click Project2 and select Team/Share;
 2. Select local Git repository and click Finish;\
-3. Make sure that Project2 is listed among Working Directory projects. 
+3. Make sure that Project2 is listed among Working Directory projects;
+4. Make sure that there is no "Share Project" command available for Project2. 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
 Content-Type: text/ecl
@@ -43,4 +44,11 @@ get-button "Git Repository Exploring" | click
 get-view "Git Repositories" | get-tree 
     | get-item "NewGitRepository.*/Working Directory.*/MyProject2" 
     | get-property caption | equals MyProject2 | verify-true
+    
+get-button "Open Perspective" | click
+with [get-window "Open Perspective"] {
+    get-table | select Resource
+    get-button OK | click
+}
+get-view "Project Explorer" | get-tree | select MyProject2 | verify-error{get-menu "Team/Share Project..."}
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
