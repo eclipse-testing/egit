@@ -6,18 +6,18 @@ Element-Name: ImportProjectFromGit
 Element-Type: context
 Element-Version: 2.0
 Id: _yqL9IGRAEeKYsa02uZ1XQA
-Save-Time: 1/22/13 5:31 PM
+Save-Time: 1/28/13 2:45 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
 Entry-Name: .ecl.context
 
-get-button "Open Perspective" | click
+get-menu "Window/Open Perspective/Other..." | click
 with [get-window "Open Perspective"] {
-    get-table | select "Resource.*"
+    get-table | select "Git Repository Exploring"
     get-button OK | click
 }
-get-button "Git Repository Exploring" | click
+
 get-view "Git Repositories" | get-tree 
     | select "NewGitRepository.*/Working Directory.*/MyProject" | get-menu "Import Projects..." | click
 get-window "Import Projects from Git Repository.*" | get-button "Next >" | click

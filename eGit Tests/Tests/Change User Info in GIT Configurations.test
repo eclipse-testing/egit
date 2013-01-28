@@ -1,0 +1,43 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ,_zjid4GO6EeKhv6_wTzSrdg
+Element-Name: Change User Info in GIT Configurations
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _YOW0AGkhEeK4B_HmnAhF8Q
+Save-Time: 1/28/13 3:09 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Go to Window/Preferences/Team/Git/Configuration;
+2. Click "Add Entry..." button;
+3. Type key and value and click OK button;
+4. Make sure that new entry is added to User settings. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-preferences-menu | click
+with [get-window Preferences] {
+    get-tree | select "Team/Git/Configuration"
+    get-button "Add Entry..." | click
+    with [get-window "Add a configuration entry"] {
+        get-editbox -after [get-label Key] | set-text "key1.key"
+        get-editbox -after [get-label Value] | set-text keyValue
+        get-button OK | click
+    }
+    get-tree -after [get-label "Location:"] | select key1
+}
+with [get-window Preferences | get-tree -after [get-label "Location:"]] {
+    get-item "key1/key" | get-property columns -index 0 | equals key | verify-true
+    get-item "key1/key" | get-property columns -index 1 | equals keyValue | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

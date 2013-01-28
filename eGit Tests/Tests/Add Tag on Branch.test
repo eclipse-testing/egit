@@ -7,7 +7,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _YGWBgGSBEeKlN9aajvd_hg
-Save-Time: 1/22/13 5:55 PM
+Save-Time: 1/28/13 12:34 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -35,8 +35,8 @@ with [get-window "Commit Changes"] {
     get-button Commit | click
 }
 with [get-view "Project Explorer" | get-tree] {
-    select "> MyProject \\[NewGitRepository master\\]" | get-menu Refresh | click
-    select "> MyProject \\[NewGitRepository master\\]" | get-menu "Team/Advanced/Tag..." | click
+    select ".*MyProject \\[NewGitRepository master\\]" | get-menu Refresh | click
+    select ".*MyProject \\[NewGitRepository master\\]" | get-menu "Team/Advanced/Tag..." | click
 }
 with [get-window "Create New Tag"] {
     get-editbox -after [get-label "Tag name*:"] | set-text Tag1
