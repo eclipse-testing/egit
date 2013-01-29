@@ -1,0 +1,68 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_zjid4GO6EeKhv6_wTzSrdg,_p-SdEGFYEeKQgdIxFQVZJQ,_rRcbsGknEeK4B_HmnAhF8Q
+Element-Name: Create Patch to File
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _NFOZ0GnZEeK4B_HmnAhF8Q
+Save-Time: 1/29/13 1:17 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Share C project to Git repository;
+2. Open cc file, make some changes and save;
+3. Right-click cc file and select Team/Create Patch command;
+4. Select "File" option and  set file location;
+5. Click Finish;
+6. Verify that file with patch was created. 
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-menu "Window/Open Perspective/Other..." | click
+with [get-window "Open Perspective"] {
+    get-table | select Resource
+    get-button OK | click
+}
+get-view "Project Explorer" | get-tree | select C | get-menu "Team/Share Project..." | click
+with [get-window "Share Project"] {
+    get-table | select Git
+    get-button "Next >" | click
+}
+with [get-window "Configure Git Repository"] {
+    get-combo -after [get-label "Repository:"] 
+        | select "NewGitRepository.*"
+    get-button Finish | click
+}
+get-view "Project Explorer" | get-tree | select ".*C.*/cc" | double-click
+with [get-editor cc | get-text-viewer] {
+    type-text qqq
+    key-type "M1+s"
+}
+get-view "Project Explorer" | get-tree | select ".*C.*/cc" 
+    | get-menu "Team/Create Patch..." | click
+get-window "Create Patch" | get-button File | click
+set-dialog-result File "platform:/resource/A/NewGitRepository.patch"
+with [get-window "Create Patch"] {
+    get-button "Browse..." | click
+    get-button Finish | click
+}
+get-view "Project Explorer" | get-tree | select "A/NewGitRepository.patch" | double-click
+get-editor "NewGitRepository.patch" | get-editbox | get-property text | equals "diff --git a/C/cc b/C/cc\n"
+    + "new file mode 100644\n"
+    + "index 0000000..e5a49f3\n"
+    + "--- /dev/null\n"
+    + "+++ b/C/cc\n"
+    + "@@ -0,0 +1 @@\n"
+    + "+qqq\n"
+    + "\\ No newline at end of file" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

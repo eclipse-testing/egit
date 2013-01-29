@@ -1,0 +1,59 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_zjid4GO6EeKhv6_wTzSrdg,_p-SdEGFYEeKQgdIxFQVZJQ,_GaHlgWFOEeKQgdIxFQVZJQ
+Element-Name: Try to Import Already Existing Project
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _CKjY0GnVEeK4B_HmnAhF8Q
+Save-Time: 1/29/13 12:45 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Right-click MyProject in NewGitRepository and select "Import Projects.." command;
+2. Select "Import existing projects" option and click Next button;
+3. Verify that "Some or all projects can not be imported because they already exist in the workspace" message is shown and Next and Finish buttons are disabled. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-menu "Window/Open Perspective/Other..." | click
+with [get-window "Open Perspective"] {
+    get-table | select Resource
+    get-button OK | click
+}
+get-menu "Window/Open Perspective/Other..." | click
+with [get-window "Open Perspective"] {
+    get-table | select "Git Repository Exploring"
+    get-button OK | click
+}
+
+get-view "Git Repositories" | get-tree 
+    | select "NewGitRepository.*/Working Directory.*/MyProject" 
+    | get-menu "Import Projects..." | click
+get-window "Import Projects from Git Repository.*" 
+    | get-group "Wizard for project import" | get-button "Import existing projects" | click
+get-window "Import Projects from Git Repository.*" 
+    | get-button "Next >" | click
+get-window "Import Projects from Git Repository.*" 
+    | get-editbox -after [get-label "Import Projects"] | get-property text 
+    | equals "Some or all projects can not be imported because they already exist in the workspace" | verify-true
+with [get-window "Import Projects from Git Repository.*" 
+    | get-tree] {
+    get-item "MyProject.*" 
+        | get-property enablement | equals false | verify-true
+    get-item "MyProject.*" 
+        | get-property selected | equals false | verify-true
+}
+get-window "Import Projects from Git Repository.*" 
+    | get-button "Next >" | get-property enablement | equals false | verify-true
+get-window "Import Projects from Git Repository.*" 
+    | get-button Finish | get-property enablement | equals false | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

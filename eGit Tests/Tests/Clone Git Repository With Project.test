@@ -5,9 +5,10 @@ Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_zjid4GO6EeKhv6_wTzSrdg,_8EFQQGkYEeK4B_HmnAhF8
 Element-Name: Clone Git Repository With Project
 Element-Type: testcase
 Element-Version: 3.0
-External-Reference: 
+External-Reference: http://jira4.xored.com/browse/QS-2371, http://jira4.xored.com/browse/QS-2372
 Id: _UD5FEGkpEeK4B_HmnAhF8Q
-Save-Time: 1/28/13 4:05 PM
+Save-Time: 1/29/13 12:21 PM
+Tags: skipExecution
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -29,6 +30,8 @@ with [get-window "Clone Git Repository"] {
     get-group Destination | get-button Browse | click
     get-button Finish | click
 }
+get-button Refresh | click
+//wait 300
 with [get-view "Git Repositories" | get-tree] {
     get-property itemCount | equals 1 | verify-true
     get-item "Repository1.*" 
