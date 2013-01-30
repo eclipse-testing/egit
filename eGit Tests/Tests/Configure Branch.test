@@ -1,0 +1,54 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ,_zjid4GO6EeKhv6_wTzSrdg,_ffT9MGqiEeK4B_HmnAhF8Q
+Element-Name: Configure Branch
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _vfPvMGqjEeK4B_HmnAhF8Q
+Save-Time: 1/30/13 1:31 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Import MyProject and commit to be in a master branch;
+2. Right-click master branch and select "Configure Branch" command;
+3. Verify that "Configure Branch..." window appears with Upstream Branch and Remote fields. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Git Repositories" | get-tree 
+    | select "NewGitRepository.*/Working Directory.*/MyProject" 
+    | get-menu "Import Projects..." | click
+get-window "Import Projects from Git Repository.*" 
+    | get-group "Wizard for project import" | get-button "Import as general project" | click
+get-window "Import Projects from Git Repository.*" 
+    | get-group "Wizard for project import" | get-button "Import existing projects" | click
+get-window "Import Projects from Git Repository.*"
+get-window "Import Projects from Git Repository.*" 
+    | get-button "Next >" | click
+    get-window "Import Projects from Git Repository.*" 
+    | get-button "Finish" | click
+get-view "Project Explorer" | get-tree | select ".*MyProject.*" 
+    | get-menu "Team/Commit..." | click
+with [get-window "Commit Changes"] {
+    get-section "Files (0/4)" | get-button "Select All" | click
+    get-section "Commit message" | get-text-viewer | type-text q
+    get-button Commit | click
+}
+get-view "Git Repositories" | get-tree 
+    | select "NewGitRepository.*/Branches/Local/master.*" 
+    | get-menu "Configure Branch..." | click
+with [get-window "Git Branch Configuration"] {
+    get-combo -after [get-label "Upstream Branch:"] | select "refs/heads/master"
+    get-combo -after [get-label "Remote:"] | select "."
+    get-button OK | click
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

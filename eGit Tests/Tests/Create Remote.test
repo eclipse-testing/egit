@@ -1,0 +1,40 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ,_zjid4GO6EeKhv6_wTzSrdg,_ffT9MGqiEeK4B_HmnAhF8Q
+Element-Name: Create Remote
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _z1CG4GqnEeK4B_HmnAhF8Q
+Save-Time: 1/30/13 1:44 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Right-click Remotes and select "Create Remote...";
+2. Make sure that New Remote window is shown with Configure push/fetch options and remote name field. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+
+get-view "Git Repositories" | get-tree 
+    | select "NewGitRepository.*/Remotes" 
+    | get-menu "Create Remote..." | click
+get-window "New Remote" | get-editbox -after [get-label "Remote name:"] | set-text Remote1
+with [get-window "New Remote"] {
+    with [get-button "Configure push"] {
+        get-property caption | equals "Configure &push" | verify-true
+        get-property selected | equals true | verify-true
+    }
+    get-button "Configure fetch" | get-property caption | equals "Configure &fetch" | verify-true
+}
+get-window "New Remote" | get-button OK | click
+get-window "Configure Push" | get-button Cancel | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
