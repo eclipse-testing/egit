@@ -1,0 +1,41 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _QVV3kGCVEeKIJJhUpAqA9Q,_p-SdEGFYEeKQgdIxFQVZJQ,_zjid4GO6EeKhv6_wTzSrdg,_ffT9MGqiEeK4B_HmnAhF8Q
+Element-Name: Open Repository Configuration in Text Editor
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _DoKyAGq0EeK4B_HmnAhF8Q
+Save-Time: 1/30/13 3:10 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Right-click NewGitRepository and select Properties;
+2. Click on "Open" button in "Properties for NewGitRepository" window;
+3. Make sure that config text file is opened and contains repository configuration info. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Git Repositories" | get-tree 
+    | select "NewGitRepository.*" 
+    | get-menu Properties | click
+get-window "Properties for NewGitRepository.*" 
+    | get-tree | select Configuration
+get-window "Properties for NewGitRepository.*" 
+    | get-button Open | click
+get-window "Properties for NewGitRepository.*" 
+    | get-button Cancel | click
+get-tab-folder -index 2 | get-property activePage | equals config | verify-true
+get-editor config | get-editbox | get-property text | equals "[core]\n"
+    + "\trepositoryformatversion = 0\n"
+    + "\tfilemode = false\n"
+    + "\tlogallrefupdates = true" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
