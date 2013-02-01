@@ -7,7 +7,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: http://jira4.xored.com/browse/QS-2373
 Id: _z0-ugGnhEeK4B_HmnAhF8Q
-Save-Time: 1/29/13 2:38 PM
+Save-Time: 2/1/13 2:01 PM
 Tags: skipExecution
 Testcase-Type: ecl
 
@@ -26,11 +26,6 @@ TEST STEPS
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-menu "Window/Open Perspective/Other..." | click
-with [get-window "Open Perspective"] {
-    get-table | select Resource
-    get-button OK | click
-}
 get-view "Project Explorer" | get-tree | select C | get-menu "Team/Share Project..." | click
 with [get-window "Share Project"] {
     get-table | select Git
